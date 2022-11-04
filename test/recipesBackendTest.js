@@ -277,9 +277,63 @@ describe('API test',()=>{
         }); 
     })
     
-    /****************************************test put by id***********************************/ 
+    /**************************************** test put by id ***********************************/ 
+    /**
+     * La idea es revisar que una recipe existente a cambiado alguna caratcerísstica,
+     * por ej el nombre. Para esto se tomará el id de la primera receta, y se guardará en una variable
+     * el objeto receta. Luego se modificará el nombre de esta y por último se compararán ambas recetas 
+    */
 
-    
+    let idPUT = "";
+    let originalRecipe = {};
+    let updateRecipe = {};
+     
+    describe("Search the first id /api/recipe", ()=>{
+         it('Search first id', (done)=>{
+             chai.request('http://localhost:9000')
+             .get('/api/recipe')
+             .end((error, response)=>{
+                 //console.log('response:',JSON.parse(response.text).body)
+                 idPUT = JSON.parse(response.text).body[0]._id;
+                 console.log('idPUT',idPUT)
+                 done();
+             })
+         }); 
+     })
+
+    describe("GET /api/recipe/:id", ()=>{
+        it('Get the recipe with the first id', (done)=>{
+            chai.request('http://localhost:9000')
+            .get(`/api/recipe/${idPUT}`)
+            .end((error, response)=>{
+                originalRecipe = JSON.parse(response.text).body;
+                updateRecipe = JSON.parse(response.text).body;
+                //console.log('originalRecipe', originalRecipe)
+                done();
+            })
+        }); 
+    })
+
+    describe("PUT /api/recipe/:id", ()=>{
+        it('It should update the first recipe in the data base. The only change should be the title', (done)=>{
+            updateRecipe.title = "Change title Test"
+            chai.request('http://localhost:9000')
+            .put(`/api/recipe/${idPUT}`)
+            .send(
+                updateRecipe
+            )
+            .end((error, response)=>{
+                response.status.should.be.equal(200);
+                console.log('updateRecipe', updateRecipe);
+                console.log('originalRecipe', originalRecipe);
+                (updateRecipe!=originalRecipe?true:false).should.be.equal(true);
+                done();
+            })
+        });
+         
+    })
+
+
 
 
 
