@@ -7,8 +7,8 @@ const noData = {
   body: [],
 };
 
-export const useRecipes = (url: string, config: SWRConfiguration = {}) => {
-  const { data, error } = useSWR<IGetRecipes>(
+export const useRecipes =  (url: string, config: SWRConfiguration = {}) => {
+  const { data, error } =  useSWR<IGetRecipes>(
     `http://localhost:9000/api${url}`,
     config
   );

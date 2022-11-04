@@ -8,9 +8,10 @@ interface Props {
 }
 
 export const RecipesList:FC<Props> = ({recipes}) => {
+  console.log('recipes',recipes)
   return (
     <Grid container sx={{display:'flex', justifyContent:'flex-start', alignContent:'baseline', padding:'20px'}}>
-      {recipes.map(recipe => <CardRecipe recipe={recipe}/>)}
+      {recipes.map(recipe => <CardRecipe recipe={recipe} key={recipe._id}/>)}
     </Grid>
   )
 }

@@ -10,7 +10,7 @@ import Image from "next/image";
 export const Navbar = () => {
 
   return (
-    <Grid container xs={12}>
+    <Grid container >
       <AppBar position="static">
         <Toolbar>
           

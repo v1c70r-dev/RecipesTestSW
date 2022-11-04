@@ -8,7 +8,7 @@ function successResponse(statusCode = 200, res) {
 
 function failureResponse(statusCode = 501, error) {
     let message = error.message || "Unknown error"
-    let errorMessage = error.errorMessage || "Unknown error, please check system logs"
+    let errorMessage = error.errorMessage || "Unknown error"
     return {
         statusCode: statusCode,
         success: false,

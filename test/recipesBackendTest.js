@@ -77,7 +77,6 @@ describe('API test',()=>{
 
     /****************************************test POST****************************************/
     
-    //https://www.youtube.com/watch?v=I4BZQr-5mBY&ab_channel=PragmaticReviews
     describe("POST /api/recipe", ()=>{
         it('It should create a new recipe in the data base', (done)=>{
             chai.request('http://localhost:9000')
@@ -330,12 +329,5 @@ describe('API test',()=>{
                 done();
             })
         });
-         
     })
-
-
-
-
-
-
 })

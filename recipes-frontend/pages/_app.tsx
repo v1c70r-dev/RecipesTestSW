@@ -3,7 +3,7 @@ import { SWRConfig } from 'swr';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import "../styles/globals.css";
 
-function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SWRConfig 
     value={{
@@ -17,4 +17,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default App;
+export default MyApp;

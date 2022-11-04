@@ -3,6 +3,10 @@ const Recipe = require("../models/recipe")
 const service = require("../services/mongo")
 
 async function createRecipe(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
+
     const recipe = new Recipe({
         title: req.body.title,
         steps: req.body.steps,
@@ -20,6 +24,9 @@ async function createRecipe(req, res, next) {
 
 
 async function listRecipe(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     try {
         let response = await service.list(Recipe)
         res.status(200).json(util.successResponse(200, response))
@@ -29,6 +36,9 @@ async function listRecipe(req, res, next) {
 }
 
 async function getRecipe(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     try {
         let response = await service.get(Recipe, req.params.id)
         res.status(200).json(util.successResponse(200, response))
@@ -38,6 +48,9 @@ async function getRecipe(req, res, next) {
 }
 
 async function dropRecipe(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     try {
         let response = await service.drop(Recipe, req.params.id)
         res.status(200).json(util.successResponse(200, response))
@@ -47,6 +60,9 @@ async function dropRecipe(req, res, next) {
 }
 
 async function updateRecipe(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     let response
     try {
         const recipe = await Recipe.findOne({ _id: req.params.id })
@@ -70,5 +86,5 @@ module.exports = {
     updateRecipe,
     listRecipe,
     getRecipe,
-    dropRecipe
+    dropRecipe,
 }
