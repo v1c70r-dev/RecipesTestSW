@@ -2,12 +2,21 @@ import { Card, CardMedia, CardContent, Typography, CardActions, Button, ListItem
 import React, {FC} from 'react'
 import { IRecipe } from '../../interfaces/recipesInterface';
 import CookieIcon from '@mui/icons-material/Cookie';
+import { useRouter } from 'next/router';
+import { DeleteRecipe } from './DeleteRecipe';
 
 interface Props {
     recipe:IRecipe
 }
 
 export const CardRecipe:FC<Props> = ({recipe}) => {
+
+  const router = useRouter();
+    
+  const navigateTo = (url: string) => {
+      router.push(url);
+  };
+
   return (
     <Grid item xs={4} sx={{padding:'10px'}}>
 
@@ -22,7 +31,6 @@ export const CardRecipe:FC<Props> = ({recipe}) => {
         <Typography gutterBottom variant="h5" component="div">
           {recipe.title}
         </Typography>
-
 
         <List>
             <Typography variant="body2" color="text.secondary"> Ingredientes: </Typography>
@@ -42,10 +50,12 @@ export const CardRecipe:FC<Props> = ({recipe}) => {
 
       </CardContent>
       <CardActions>
-        <Button size="small">Editar</Button>
-        <Button size="small">Borrar</Button>
+        <Button size="small" onClick={() => navigateTo(`/${recipe._id}`)}>Editar</Button>
+        {/* <Button size="small" onClick={() => setDel(true)}>Borrar</Button> */}
+        <DeleteRecipe recipe={recipe}/>
       </CardActions>
     </Card>
+
     </Grid>
   )
 }

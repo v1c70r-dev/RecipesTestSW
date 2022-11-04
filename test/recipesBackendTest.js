@@ -76,7 +76,6 @@ describe('API test',()=>{
     })
 
     /****************************************test POST****************************************/
-    
     describe("POST /api/recipe", ()=>{
         it('It should create a new recipe in the data base', (done)=>{
             chai.request('http://localhost:9000')
@@ -248,7 +247,7 @@ describe('API test',()=>{
     })
 
     describe("DELETE /api/recipe/:id", ()=>{
-        it('It should delete the last recipe', (done)=>{
+        it('It should delete the first recipe', (done)=>{
             chai.request('http://localhost:9000')
             .delete(`/api/recipe/${id}`)
             .end((error, response)=>{

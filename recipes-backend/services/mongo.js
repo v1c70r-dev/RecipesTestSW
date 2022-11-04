@@ -46,7 +46,7 @@ async function list(schemaObject) {
 
 async function drop(schemaObject, id) {
     try {
-        let response = await schemaObject.deleteOne({ _id: id })
+        let response = await schemaObject.deleteOne({ _id: id }).setHeader('Access-Control-Allow-Origin', '*')
         return response
     } catch (error) {
         throw error

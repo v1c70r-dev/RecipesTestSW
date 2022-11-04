@@ -37,7 +37,7 @@ async function listRecipe(req, res, next) {
 
 async function getRecipe(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     try {
         let response = await service.get(Recipe, req.params.id)
@@ -49,7 +49,7 @@ async function getRecipe(req, res, next) {
 
 async function dropRecipe(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     try {
         let response = await service.drop(Recipe, req.params.id)
@@ -61,7 +61,7 @@ async function dropRecipe(req, res, next) {
 
 async function updateRecipe(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Authorization');
     let response
     try {
